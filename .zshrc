@@ -4,6 +4,8 @@ export GPG_TTY=$(tty)
 # Paths for Snap
 PATH=$PATH:/snap/bin
 PATH=$PATH:~/.local/bin
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:~/.cargo/bin
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -11,6 +13,10 @@ PATH=$PATH:~/.local/bin
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias fuck)
 
 # Azure
 export AZURE_AD_USER=[replace-with-aad-username]
@@ -123,3 +129,5 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ZLE_RPROMPT_INDENT=0
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
